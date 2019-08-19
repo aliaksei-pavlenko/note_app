@@ -79,9 +79,7 @@ let convTextToSpans = (text) => {
 }
 
 
-let text = 'hello #guys from test #text';
 
-console.log(convTextToSpans(text));
 
 
 
