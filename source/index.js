@@ -1,10 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import EntireApp from './Components/EntireApp'
 
-let App = () => {
-    return (
-        <div>hello react!</div>
-    )
-}
 
-ReactDOM.render(<App/>,document.getElementById('app'))
+ReactDOM.render(<EntireApp/>,document.getElementById('app'))
