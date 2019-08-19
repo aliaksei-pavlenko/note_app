@@ -15,3 +15,5 @@ let colorizeSpans = (tagsId) => {
 
 // how to use
 // colorizeSpans(convTextToSpans('some text...').tagsId)
+
+export default colorizeSpans;

@@ -78,7 +78,7 @@ let convTextToSpans = (text) => {
     return {spanArray:spanArray,shadowSpansArray:shadowSpansArray,tagsId:tagsId} //
 }
 
-
+export default convTextToSpans;
 
 
 

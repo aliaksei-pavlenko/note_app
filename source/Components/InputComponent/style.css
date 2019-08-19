@@ -1,7 +1,10 @@
 .editDiv {
-    border: 1px black;
+    height: 1.2em;
+    border: 1px solid black;
+    margin-bottom: 10px;
 }
 
 .editTags {
-    border: 1px black;
+    height: 1.2em;
+    border: 1px solid black;
 }
