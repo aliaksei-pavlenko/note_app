@@ -11,9 +11,9 @@ let onInputCallback = (e) => {
 
     e.target.innerHTML = convTextToSpans(e.target.innerText).spanArray.join('');
     if(convTextToSpans(e.target.innerText).shadowSpansArray.length!==0){
-        document.getElementsByClassName('editTags').innerHTML = convTextToSpans(e.target.innerText).shadowSpansArray.join('');
+        document.getElementsByClassName('editTags')[0].innerHTML = convTextToSpans(e.target.innerText).shadowSpansArray.join('');
     } else {
-        document.getElementsByClassName('editTags').innerHTML = '<span>no tags</span>'
+        document.getElementsByClassName('editTags')[0].innerHTML = '<span>no tags</span>'
     }
     colorizeSpans(convTextToSpans(e.target.innerText).tagsId);
 
@@ -41,7 +41,11 @@ let onInputCallback = (e) => {
             if(e.nativeEvent.inputType === 'insertParagraph'){
                 window.getSelection().collapse(document.getElementById(parentId).firstChild, 1);
             } else {
-                window.getSelection().collapse(document.getElementById(parentId).firstChild, offsetOnTextNode);
+                if(parentId === ''){
+                    window.getSelection().collapse(document.getElementById('span0').firstChild, offsetOnTextNode);
+                } else {
+                    window.getSelection().collapse(document.getElementById(parentId).firstChild, offsetOnTextNode);
+                }
             }
             
         }
