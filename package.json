@@ -4,7 +4,7 @@
   "description": "react webpack babel",
   "main": "index.js",
   "scripts": {
-    "start": "webpack-dev-server --mode development --open --hot",
+    "start": "SET NODE_ENV=development&& SET BABEL_ENV=development&& webpack-dev-server --mode development --open --hot",
     "build": "webpack --mode production"
   },
   "author": "",
@@ -14,10 +14,9 @@
     "react-dom": "^16.9.0"
   },
   "devDependencies": {
-    "babel-core": "^6.26.3",
-    "babel-loader": "^7.1.5",
-    "babel-preset-env": "^1.7.0",
-    "babel-preset-react": "^6.24.1",
+    "@babel/core": "^7.4.3",
+    "babel-loader": "^8.0.6",
+    "babel-preset-react-app": "^9.0.0",
     "css-loader": "^3.2.0",
     "html-webpack-plugin": "^3.2.0",
     "style-loader": "^1.0.0",
