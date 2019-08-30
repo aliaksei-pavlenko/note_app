@@ -1,0 +1,8 @@
+.edit-button {
+    display: inline-block;
+    margin-left: 5px;
+    height: 15px;
+    width: 45px;
+    background: url('./images/small_pencil.png') no-repeat;
+    background-size: 100%;
+}

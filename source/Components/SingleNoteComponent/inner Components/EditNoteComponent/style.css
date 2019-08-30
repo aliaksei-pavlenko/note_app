@@ -1,0 +1,26 @@
+.canceEdit-button{
+    display: inline-block;
+    margin-left: 5px;
+    height: 15px;
+    width: 15px;
+    background: url('./images/cancel-edit.png') no-repeat;
+    background-size: 100%;
+}
+
+.deleteNote-button{
+    display: inline-block;
+    margin-left: 5px;
+    height: 20px;
+    width: 20px;
+    background: url('./images/trash-bin.png') no-repeat;
+    background-size: 100%;
+}
+
+.acceptEdit-button{
+    display: inline-block;
+    margin-left: 5px;
+    height: 15px;
+    width: 15px;
+    background: url('./images/ok.png') no-repeat;
+    background-size: 100%;
+}
