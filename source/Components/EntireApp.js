@@ -4,7 +4,7 @@ import InputComponent from './InputComponent/InputComponent';
 import SingleNoteComponent from './SingleNoteComponent/SingleNoteComponent';
 import FilterNotesComponent from './FilterNotesComponent/FilterNotesComponent';
 // Functions
-
+import getFilteredNotes from './FilterNotesComponent/getFilteredNotes';
 
 
 
@@ -65,12 +65,22 @@ class EntireApp extends React.Component {
     whichNoteWillEdit = (id) => {
         this.setState({editNoteId:id})
     }
+
+    // Note Filter
+    useFilter=(filterArray)=>{
+        fetch('http://localhost:9000')
+        .then(res => res.json())
+        .then(obj => {
+            this.setState({notes:getFilteredNotes(filterArray,obj.notes,obj.tagsMask)})
+        })
+    }
+
  
     render () {
         return (
             <div className={'EntireApp'}>
                 <InputComponent addNote={this.addNote}/>
-                <FilterNotesComponent/>
+                <FilterNotesComponent useFilter={this.useFilter}/>
                 {this.state.notes.map((note)=>{
                     return(
                         <SingleNoteComponent
