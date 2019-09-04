@@ -13,12 +13,15 @@ let EditNoteComponent = (props) => {
         <div className={'EditNoteComponent'}>
             <div contentEditable className={'editDiv-S'} onInput={onInputCallback}></div>
             <div className={'editTags-S'}></div>
-            <div className={'acceptEdit-button'} onClick={()=>{
-                if(document.getElementsByClassName('editDiv-S')[0].innerText === addHashTagToWords(props.note)){props.whichNoteWillEdit('a')}
-                else {props.updateNote(props.note.id,document.getElementsByClassName('editDiv-S')[0].innerText)}
-            }}></div>
-            <div className={'canceEdit-button'} onClick={()=>{props.whichNoteWillEdit('a')}}></div>
-            <div className={'deleteNote-button'} onClick={()=>{props.deleteNote(props.note.id)}}></div>
+            <div className={'btn-container'}>
+                <div className={'accept-btn'} onClick={()=>{
+                    if(document.getElementsByClassName('editDiv-S')[0].innerText === addHashTagToWords(props.note)){props.whichNoteWillEdit('a')}
+                    else {props.updateNote(props.note.id,document.getElementsByClassName('editDiv-S')[0].innerText)}
+                }}></div>
+                <div className={'cancel-btn'} onClick={()=>{props.whichNoteWillEdit('a')}}></div>
+                <div className={'delete-btn'} onClick={()=>{props.deleteNote(props.note.id)}}></div>
+                <div className={'shadow2'}></div>
+            </div>
         </div>
     )
 }

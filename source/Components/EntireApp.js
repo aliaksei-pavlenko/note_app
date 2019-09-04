@@ -1,4 +1,5 @@
 import React from 'react';
+import './style.css';
 //Components
 import InputComponent from './InputComponent/InputComponent';
 import SingleNoteComponent from './SingleNoteComponent/SingleNoteComponent';

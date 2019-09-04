@@ -1,9 +1,79 @@
-.loupe-button {
-    display: inline-block;
-    margin-left: 5px;
-    height: 20px;
-    width: 20px;
-    background: url('./images/loupe.png') no-repeat;
-    background-size: 100%;
+.FilterNotesComponent {
+    display: flex;
+    margin: 5px 0;
+    position: relative;
 }
 
+
+.info-message {
+    position: absolute;
+    top: 0;
+    z-index: 2;
+}
+
+.filterInput {
+    width: 200px;
+    display: block;
+    border: 1px solid rgba(0,0,0,.5);
+    border-radius: 5px;
+    box-shadow: 0px 5px 4px -5px rgba(0,0,0,.5);
+    height: 23px;
+    box-sizing: border-box;
+}
+
+
+.text-message {
+    color:transparent;
+    max-width: 225px;
+    border-radius: 5px;
+    background-color: transparent;
+    opacity: 0;
+    transition-duration: 500ms;
+    transition-timing-function: ease-in;
+}
+
+.blank-space {
+    float: right;
+    width: 23px;
+    height: 23px;
+}
+
+
+.info-btn {
+    background-color: royalblue;
+    width: 23px;
+    height: 23px;
+    border-radius: 50%;
+    color: white;
+    text-align: center;
+    font-size: 23px;
+    line-height: 23px;
+
+    position: absolute;
+
+    right: -225px;
+    top: 0;
+    
+    box-shadow: 0px 9px 7px -8px black;
+}
+
+.info-btn:hover {
+    animation: growAnimation 1000ms infinite;
+}
+
+@keyframes growAnimation {
+    0% {
+        transform: scale(1,1);
+        box-shadow: 0px 9px 7px -8px black;
+    }
+
+    50% {
+        transform: scale(1.25,1.25);
+        box-shadow: 0px 3px 10px -7px black;
+        background-color: rgb(65, 110, 243);
+    }
+    100% {
+        transform: scale(1,1);
+        box-shadow: 0px 9px 7px -8px black;
+    }
+}
