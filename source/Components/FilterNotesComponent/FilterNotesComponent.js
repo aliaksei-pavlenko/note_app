@@ -7,7 +7,13 @@ let FilterNotesComponent = (props) => {
     return (
         <div className={'FilterNotesComponent'}>
             <input className={'filterInput'}
-                onInput={(e)=>{props.useFilter(e.target.value.split(','))}}
+                onInput={(e)=>{
+                    if(e.target.value === ''){
+                        props.getNotes();
+                    } else {
+                        props.useFilter(e.target.value.split(','))
+                    }
+                }}
             ></input>
             <div className={'info-message'} onClick={()=>{
 

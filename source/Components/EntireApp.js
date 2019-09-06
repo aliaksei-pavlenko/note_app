@@ -43,7 +43,7 @@ class EntireApp extends React.Component {
             .then(obj => {this.setState(obj,()=>{this.whichNoteWillEdit('a')})})
     }
     // Read
-    getNotes(){
+    getNotes = () => {
         fetch('http://localhost:9000')
             .then(res => res.json())
             .then(obj => this.setState(obj))
@@ -81,7 +81,7 @@ class EntireApp extends React.Component {
         return (
             <div className={'EntireApp'}>
                 <InputComponent addNote={this.addNote}/>
-                <FilterNotesComponent useFilter={this.useFilter}/>
+                <FilterNotesComponent useFilter={this.useFilter} getNotes={this.getNotes}/>
                 {this.state.notes.map((note)=>{
                     return(
                         <SingleNoteComponent

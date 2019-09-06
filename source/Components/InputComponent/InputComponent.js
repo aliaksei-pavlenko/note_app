@@ -9,9 +9,13 @@ let InputComponent = (props) => {
                 <div contentEditable className={'editDiv'} onInput={(e)=>{onInputCallback(e,'id')}}></div>
                 <div className={'editTags'}></div>
             </div>
-            <div className={'addNote-button'} onClick={()=>{props.addNote(document.getElementsByClassName('editDiv')[0].innerText);
-                                document.getElementsByClassName('editDiv')[0].innerText = '';
-                                document.getElementsByClassName('editTags')[0].innerText = '';
+            <div className={'addNote-button'} onClick={()=>{
+                if(document.getElementsByClassName('editDiv')[0].innerText === ''){}
+                else {
+                    props.addNote(document.getElementsByClassName('editDiv')[0].innerText);
+                    document.getElementsByClassName('editDiv')[0].innerText = '';
+                    document.getElementsByClassName('editTags')[0].innerText = '';
+                }
             }}></div>
         </div>
     )
