@@ -1,4 +1,4 @@
-let convTextToSpans = (text) => {
+let convTextToSpans = (text,selector) => {
     let allCharsArray = text.split('');
     let newAllCharsArray = [];
     allCharsArray.forEach(char=>{
@@ -65,14 +65,14 @@ let convTextToSpans = (text) => {
                 }
             }
         };
-        let currentSpan = `<span id='span${i}'>${finalWordArray[i]}</span>`;
+        let currentSpan = `<span ${selector}='span${i}'>${finalWordArray[i]}</span>`;
         spanArray[i] = currentSpan;
     }
 
     let shadowSpansArray = [];
 
     for(let key in tagsId){
-        let currentSpan = `<span id='shadow${key}'>${tagsId[key]}</span><span>  </span>`;
+        let currentSpan = `<span ${selector}='shadow${key}'>${tagsId[key]}</span><span>  </span>`;
         shadowSpansArray.push(currentSpan);
     }
     return {spanArray:spanArray,shadowSpansArray:shadowSpansArray,tagsId:tagsId} //

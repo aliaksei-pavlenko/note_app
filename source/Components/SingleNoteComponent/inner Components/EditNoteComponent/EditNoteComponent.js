@@ -5,13 +5,14 @@ import initInnerHTMLCallback from './initInnerHTMLCallback';
 import addHashTagToWords from './addHashTagToWords';
 
 
+
 let EditNoteComponent = (props) => {
     useEffect(()=>{
-        initInnerHTMLCallback(document.getElementsByClassName('editDiv-S')[0],addHashTagToWords(props.note))
+        initInnerHTMLCallback(document.getElementsByClassName('editDiv-S')[0],addHashTagToWords(props.note),'class')
     },[])
     return (
         <div className={'EditNoteComponent'}>
-            <div contentEditable className={'editDiv-S'} onInput={onInputCallback}></div>
+            <div contentEditable className={'editDiv-S'} onInput={(e)=>{onInputCallback(e,'class')}}></div>
             <div className={'editTags-S'}></div>
             <div className={'btn-container'}>
                 <div className={'accept-btn'} onClick={()=>{
@@ -20,7 +21,7 @@ let EditNoteComponent = (props) => {
                 }}></div>
                 <div className={'cancel-btn'} onClick={()=>{props.whichNoteWillEdit('a')}}></div>
                 <div className={'delete-btn'} onClick={()=>{props.deleteNote(props.note.id)}}></div>
-                <div className={'shadow2'}></div>
+                <div className={'shadow_'}></div>
             </div>
         </div>
     )

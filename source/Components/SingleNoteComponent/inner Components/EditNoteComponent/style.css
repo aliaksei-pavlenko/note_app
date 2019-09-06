@@ -69,7 +69,7 @@
 
 }
 
-.shadow2 {
+.shadow_ {
     
     box-shadow: 0px 30px 6px -4px rgba(1,1,1,.6);
     width: 32px;
@@ -81,11 +81,11 @@
     transition: all 500ms ease-out;
 }
 
-.delete-btn:hover ~ .shadow2 {
+.delete-btn:hover ~ .shadow_ {
     box-shadow: 0px 32px 7px -3px rgba(1,1,1,.6);
 }
 
-.shadow2::before {
+.shadow_::before {
     content: '';
     box-shadow: 0px 28px 7px -4px rgba(1,1,1,.6);
     width: 25px;
@@ -97,12 +97,12 @@
     transition: all 500ms ease-out;
 }
 
-.cancel-btn:hover ~ .shadow2::before {
+.cancel-btn:hover ~ .shadow_::before {
     box-shadow: 0px 30px 7px -3px rgba(1,1,1,.6);
 }
 
 
-.shadow2::after {
+.shadow_::after {
     content: '';
     box-shadow: 0px 30px 7px -4px rgba(1,1,1,.6);
     width: 19px;
@@ -115,7 +115,7 @@
 
 }
 
-.accept-btn:hover ~ .shadow2::after {
+.accept-btn:hover ~ .shadow_::after {
     width: 21px;
     left: -79px;
     box-shadow: 0px 35px 7px -3px rgba(1,1,1,.5);

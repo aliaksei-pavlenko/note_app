@@ -6,7 +6,7 @@ let InputComponent = (props) => {
     return (
         <div className={'InputComponent'}>
             <div className={'inputContainer'}>
-                <div contentEditable className={'editDiv'} onInput={onInputCallback}></div>
+                <div contentEditable className={'editDiv'} onInput={(e)=>{onInputCallback(e,'id')}}></div>
                 <div className={'editTags'}></div>
             </div>
             <div className={'addNote-button'} onClick={()=>{props.addNote(document.getElementsByClassName('editDiv')[0].innerText);

@@ -2,20 +2,20 @@ import convTextToSpans from './gears/convTextToSpans';
 import colorizeSpans from './gears/colorizeSpans';
 
 
-let onInputCallback = (e) => {
+let onInputCallback = (e,selector) => {
     let offsetOnTextNode = window.getSelection().baseOffset;
     let baseLength = window.getSelection().baseNode.length;
     let parentId = window.getSelection().focusNode.parentNode.id;
     let parentNode = window.getSelection().focusNode.parentNode;
 
 
-    e.target.innerHTML = convTextToSpans(e.target.innerText).spanArray.join('');
-    if(convTextToSpans(e.target.innerText).shadowSpansArray.length!==0){
-        document.getElementsByClassName('editTags')[0].innerHTML = convTextToSpans(e.target.innerText).shadowSpansArray.join('');
+    e.target.innerHTML = convTextToSpans(e.target.innerText,selector).spanArray.join('');
+    if(convTextToSpans(e.target.innerText,selector).shadowSpansArray.length!==0){
+        document.getElementsByClassName('editTags')[0].innerHTML = convTextToSpans(e.target.innerText,selector).shadowSpansArray.join('');
     } else {
         document.getElementsByClassName('editTags')[0].innerHTML = '<span>no tags</span>'
     }
-    colorizeSpans(convTextToSpans(e.target.innerText).tagsId);
+    colorizeSpans(convTextToSpans(e.target.innerText,selector).tagsId,selector);
 
     if (e.nativeEvent.data === ' ') {
         let newParentId = `span${parseInt(parentId.slice(4)) + 1}`;
