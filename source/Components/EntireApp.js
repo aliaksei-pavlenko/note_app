@@ -18,15 +18,27 @@ class EntireApp extends React.Component {
     }
 
     // Create
-    addNote = (string) => {
+    addNote = async (string) => {
 
-        let fetchOptions = {
-            method: 'post',
-            body: string
+        let responseBody = await fetch('http://localhost:9000').then(body=>body.json());
+
+        if(responseBody.notes.length >= 15){
+            await new Promise((res,rej)=>{document.getElementsByClassName('limitWarning')[0].style.display = 'flex';res()});
+            await new Promise((res,rej)=>{
+                setTimeout(()=>{
+                    document.getElementsByClassName('limitWarning')[0].style.opacity = '1';
+                    res()
+                },100);  
+            });
+        } else {
+            let fetchOptions = {
+                method: 'post',
+                body: string
+            }
+            fetch('http://localhost:9000', fetchOptions)
+                .then(res => res.json())
+                .then(obj => this.setState(obj))
         }
-        fetch('http://localhost:9000', fetchOptions)
-            .then(res => res.json())
-            .then(obj => this.setState(obj))
     }
 
     // Update
@@ -94,6 +106,16 @@ class EntireApp extends React.Component {
                         />
                     )
                 })}
+                <div className={'limitWarning'} onClick={(e)=>{
+                    // console.log(e);
+                    e.target.style.opacity = '.5';
+                    e.persist();
+                    setTimeout(()=>{
+                        e.target.style.display = 'none';
+                    },400)
+                }}>
+                    maximum number of notes (15) in demo mode has been reached !!!
+                </div>
             </div>
         )
     }
