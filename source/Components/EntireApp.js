@@ -7,7 +7,7 @@ import FilterNotesComponent from './FilterNotesComponent/FilterNotesComponent';
 // Functions
 import getFilteredNotes from './FilterNotesComponent/getFilteredNotes';
 
-
+const serverURL = 'https://server-for-noteapp.herokuapp.com/';
 
 class EntireApp extends React.Component {
     constructor() {
@@ -20,7 +20,7 @@ class EntireApp extends React.Component {
     // Create
     addNote = async (string) => {
 
-        let responseBody = await fetch('http://localhost:9000').then(body=>body.json());
+        let responseBody = await fetch(serverURL).then(body=>body.json());
 
         if(responseBody.notes.length >= 15){
             await new Promise((res,rej)=>{document.getElementsByClassName('limitWarning')[0].style.display = 'flex';res()});
@@ -35,7 +35,7 @@ class EntireApp extends React.Component {
                 method: 'post',
                 body: string
             }
-            fetch('http://localhost:9000', fetchOptions)
+            fetch(serverURL, fetchOptions)
                 .then(res => res.json())
                 .then(obj => this.setState(obj))
         }
@@ -50,13 +50,13 @@ class EntireApp extends React.Component {
             },
             body: JSON.stringify({id,newtext})
         }
-        fetch('http://localhost:9000', fetchOptions)
+        fetch(serverURL, fetchOptions)
             .then(res => res.json())
             .then(obj => {this.setState(obj,()=>{this.whichNoteWillEdit('a')})})
     }
     // Read
     getNotes = () => {
-        fetch('http://localhost:9000')
+        fetch(serverURL)
             .then(res => res.json())
             .then(obj => this.setState(obj))
     }
@@ -66,7 +66,7 @@ class EntireApp extends React.Component {
             method: 'delete',
             body: id
         }
-        fetch('http://localhost:9000', fetchOptions)
+        fetch(serverURL, fetchOptions)
             .then(res => res.json())
             .then(obj => this.setState(obj))
     }
@@ -81,7 +81,7 @@ class EntireApp extends React.Component {
 
     // Note Filter
     useFilter=(filterArray)=>{
-        fetch('http://localhost:9000')
+        fetch(serverURL)
         .then(res => res.json())
         .then(obj => {
             this.setState({notes:getFilteredNotes(filterArray,obj.notes,obj.tagsMask)})
@@ -114,7 +114,8 @@ class EntireApp extends React.Component {
                         e.target.style.display = 'none';
                     },400)
                 }}>
-                    maximum number of notes (15) in demo mode has been reached !!!
+                    maximum number of notes (15) in demo mode has been reached !!! <br/>
+                    solution: you can delete a note/s to add a new one
                 </div>
             </div>
         )

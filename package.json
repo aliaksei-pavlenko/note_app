@@ -3,13 +3,17 @@
   "version": "1.0.0",
   "description": "react webpack babel",
   "main": "index.js",
+  "homepage": "https://alikasei-pavlenko.github.io/note_app",
   "scripts": {
     "start": "SET NODE_ENV=development&& SET BABEL_ENV=development&& webpack-dev-server --mode development --open --hot",
-    "build": "webpack --mode production"
+    "build": "SET NODE_ENV=production&& SET BABEL_ENV=production&& webpack --mode production",
+    "predeploy": "npm run build",
+    "deploy":"gh-pages -d destination"
   },
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "gh-pages": "^2.1.1",
     "react": "^16.9.0",
     "react-dom": "^16.9.0"
   },
