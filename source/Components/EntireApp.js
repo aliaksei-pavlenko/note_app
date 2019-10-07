@@ -13,7 +13,8 @@ class EntireApp extends React.Component {
     constructor() {
         super();
         this.state = {
-            notes: []
+            notes: [],
+            isLoading: true
         }
     }
 
@@ -58,7 +59,7 @@ class EntireApp extends React.Component {
     getNotes = () => {
         fetch(serverURL)
             .then(res => res.json())
-            .then(obj => this.setState(obj))
+            .then(obj => this.setState(Object.assign(obj,{isLoading:false})))
     }
     // Delete
     deleteNote = (id) =>{
@@ -94,7 +95,11 @@ class EntireApp extends React.Component {
             <div className={'EntireApp'}>
                 <InputComponent addNote={this.addNote}/>
                 <FilterNotesComponent useFilter={this.useFilter} getNotes={this.getNotes}/>
-                {this.state.notes.map((note)=>{
+                {this.state.isLoading 
+                ? 
+                <div style={{textAlign: 'center'}}>Loading ...</div>
+                :
+                this.state.notes.map((note)=>{
                     return(
                         <SingleNoteComponent
                             key = {note.id}
